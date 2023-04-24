@@ -125,7 +125,7 @@ previous_labels = 'Models_and_Labels/base-face-labels.pickle'
 with open(previous_labels, 'rb') as f:
     og_labels = pickle.load(f)
     labels = {key:value for key,value in og_labels.items()}
-
+"""
 '''
 This file is inteded to test using preselected videos. The videos were chosen becuase they
 simulate an example use case environment of the final system, a pop-up shop/commerce checkout.
@@ -575,7 +575,7 @@ for person_dir in person_dirs:
     # delete input subdirectory once sorted
     subdir_path = os.path.join(input_dir, person_dir)
     shutil.rmtree(subdir_path)
-
+"""
 print("\nDONE WITH SORTING, NOW AUGMENTING AND SPLITTING DATA\n")
 
 
@@ -660,6 +660,10 @@ for person_folder in person_folders:
     person_train_folder = os.path.join(training_folder, person_name)
     if not os.path.exists(person_train_folder):
         os.makedirs(person_train_folder)
+        
+    person_complete_train_folder = os.path.join(complete_training_datasets_folder, person_name)
+    if not os.path.exists(person_complete_train_folder):
+        os.makedirs(person_complete_train_folder)
 
     person_valid_folder = os.path.join(validation_folder, person_name)
     if not os.path.exists(person_valid_folder):
@@ -963,10 +967,14 @@ for video in ["Videos/validation_video_1.mp4", "Videos/validation_video_2.mp4"] 
                 h = h + y - 1
                 y = 1
                
+            '''
+            REMOVED FOR THE TEST VIDEOS DUE TO THE SIZE OF THE VIDEO FILES
+            WILL BE USED IN REAL-TIME IMPLEMENTATION
             #if face is too small (reasonably far from camera) we dont want to consider that person
             if (w * h < 2000) :
                continue
-            
+           '''
+           
             #get center dot to use to track distance between frames
             centerX = int(x + (w / 2))
             centerY = int(y + (h / 2))
