@@ -126,7 +126,6 @@ with open(previous_labels, 'rb') as f:
     og_labels = pickle.load(f)
     labels = {key:value for key,value in og_labels.items()}
 
-
 '''
 This file is inteded to test using preselected videos. The videos were chosen becuase they
 simulate an example use case environment of the final system, a pop-up shop/commerce checkout.
@@ -137,10 +136,10 @@ All videos use the same 4 Actors, although only 3 will be present in the validat
 # loop through each training video
 for video in ["Videos/train_video_1.mp4", "Videos/train_video_2.mp4", "Videos/train_video_3.mp4"] :
     
-    print(f"\nNOW WATCHING {video}\n")
-    
     # start video capture of current video
     stream = cv2.VideoCapture(video)
+    
+    print(f"\nNOW WATCHING {video}\n")
     
     # set the display window output dimensions
     stream.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -219,10 +218,14 @@ for video in ["Videos/train_video_1.mp4", "Videos/train_video_2.mp4", "Videos/tr
             if y < 1:
                 h = h + y - 1
                 y = 1
-               
+             
+            '''
+            REMOVED FOR THE TEST VIDEOS DUE TO THE SIZE OF THE VIDEO FILES
+            WILL BE USED IN REAL-TIME IMPLEMENTATION
             #if face is too small (reasonably far from camera) we dont want to consider that person
             if (w * h < 2000) :
                continue
+           '''
             
             #get center dot to use to track distance between frames
             centerX = int(x + (w / 2))
