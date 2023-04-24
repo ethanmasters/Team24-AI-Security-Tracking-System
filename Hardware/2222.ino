@@ -1,7 +1,11 @@
+/*
+Team 24- AI tracking system 
+Author - Karthik Ravikumar
+Hardware subsystem for lipo fuel gauge. Below is the arduino code for interfacing the arduino with the lipo fuel gauge and OLED display.
+*/
+
 #include <U8glib.h>
-
 #include <Adafruit_SH1106.h>
-
 #include <SPI.h>
 #include <Wire.h>
 #include <LiFuelGauge.h>        
@@ -17,7 +21,7 @@ Adafruit_SH1106 display(OLED_RESET);
  
 void lowPower();
  
-LiFuelGauge gauge(MAX17043, 0, lowPower);
+LiFuelGauge gauge(MAX17043, 0, lowPower); //initalizes fuel gauge
  
 volatile boolean alert = false;
  
@@ -35,7 +39,7 @@ void setup()
   */
   pinMode(20, INPUT); //sda
 
-
+  //initalizes display
   display.begin(SH1106_SWITCHCAPVCC, SCREEN_ADDRESS);
   display.display();
   delay(200);
@@ -47,9 +51,8 @@ void setup()
   gauge.reset();  // Resets MAX17043
   delay(200);  // Waits for the initial measurements to be made
   
-  uint8_t thrd = 32;
   // Sets the Alert Threshold to 10% of full capacity
-  gauge.setAlertThreshold(thrd);
+  gauge.setAlertThreshold(10);
   Serial.println(String("Alert Threshold is set to ") +
                  gauge.getAlertThreshold() + '%');
 
@@ -80,7 +83,7 @@ void loop()
   display.display();
   display.clearDisplay();
 
-  // triggers when battery level reaches below 10
+  // triggers when battery level reaches below 10%
   if ( alert )
   {
     Serial.println("Beware, Low Power!");
