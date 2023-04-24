@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "63EB204E-E8FC-4A8F-A084-EB2B6B6026F2"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "prototype/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 6f991a56b6d8e923"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "1583">
+               </Location>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 8849009a42ec374f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;prototype.Profile&gt;, Foundation.UUID, prototype.ListRow&gt;&gt; in prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 6f991a56b6d8ebf0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1574">
+               </Location>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 8849009a42ec359e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;prototype.Profile&gt;, Foundation.UUID, prototype.ListRow&gt;&gt; in prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 6f991a56b6d8ebf0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1972">
+               </Location>
+               <Location
+                  uuid = "979F8FC3-2715-4D7E-9F01-E89A718B9D3C - 8849009a42ec359e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;prototype.Profile&gt;, Foundation.UUID, prototype.ListRow&gt;&gt; in prototype.ContentView.body.getter : some"
+                  moduleName = "prototype"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarah/Desktop/prototype/prototype/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
