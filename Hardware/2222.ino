@@ -29,14 +29,6 @@ volatile boolean alert = false;
 void setup()
 {
   Serial.begin(9600); // Initializes serial port
-  /*
-  if (!display.begin(SH1106_SWITCHCAPVCC,0x3C))
-  {
-    Serial.println(F("SH1106 allocation failed"));
-    for (;;); // Don't proceed, loop forever
-  }
-  
-  */
   pinMode(20, INPUT); //sda
 
   //initalizes display
@@ -87,20 +79,15 @@ void loop()
   if ( alert )
   {
     Serial.println("Beware, Low Power!");
-    Serial.println("Finalizing operations...");
     gauge.clearAlertInterrupt();  // Resets the ALRT pin
     alert = false;
-    Serial.println("Storing data...");
-    Serial.println("Sending notification...");
-    Serial.println("System operations are halted...");
+    Serial.println("Storing data");
+    Serial.println("System operations is now paused");
     gauge.sleep();  // Forces the MAX17043 into sleep mode
     while ( true ) ;
   }
   delay(2000);
   
-
-  //int sda = digitalRead(20);
-  //delay(100);
 }
  
 void lowPower()
