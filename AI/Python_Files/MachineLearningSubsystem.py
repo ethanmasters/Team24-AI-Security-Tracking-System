@@ -125,7 +125,7 @@ previous_labels = 'Models_and_Labels/base-face-labels.pickle'
 with open(previous_labels, 'rb') as f:
     og_labels = pickle.load(f)
     labels = {key:value for key,value in og_labels.items()}
-"""
+
 '''
 This file is inteded to test using preselected videos. The videos were chosen becuase they
 simulate an example use case environment of the final system, a pop-up shop/commerce checkout.
@@ -575,7 +575,7 @@ for person_dir in person_dirs:
     # delete input subdirectory once sorted
     subdir_path = os.path.join(input_dir, person_dir)
     shutil.rmtree(subdir_path)
-"""
+
 print("\nDONE WITH SORTING, NOW AUGMENTING AND SPLITTING DATA\n")
 
 
