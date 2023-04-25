@@ -9,6 +9,11 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
+/* ORIGINAL DESIGN FOR FACEDATABASE
+    --INCLUDES HARD CODED 'DummieProfiles'
+ 
+ --This helped me get the overall design and format down before reading/writing to the database--
+ 
 struct FaceDatabaseRow: View {
     var profile: Profile
     @State private var istracked = true
@@ -79,6 +84,7 @@ struct FaceDatabaseRow: View {
         }
     }
 }
+
 struct FaceDatabaseView: View {
     let DummyProfiles = [
         Profile(name: "Andy Anderson", POI: false, first_seen: "08:08 AM", last_seen: "08:30 AM", interactiontrack: false),
@@ -94,8 +100,10 @@ struct FaceDatabaseView: View {
         }
         
     }
-    
+
 }
+ */
+
 struct FaceDatabaseView_Previews: PreviewProvider {
     static var previews: some View {
         //FaceDatabaseView()
@@ -109,6 +117,7 @@ struct FaceDatabaseView2: View{
     private let ref = Database.database().reference()
     
     @State var isProfileShowing = false
+    @State var selectedProfile: ProfileClass? = nil
     
     @StateObject
     var viewModel = ReadViewModel()
@@ -130,7 +139,7 @@ struct FaceDatabaseView2: View{
                                 }.buttonStyle(CloseProfileIcon())
                                     .padding(.trailing,170)
                             }
-                            IndividualProfileView()
+                            IndividualProfileView(node: object)
                         }
                     } else{
                         HStack {
@@ -199,7 +208,13 @@ struct FaceDatabaseView2: View{
                 }//ForEach
                 
             }//List
-        } else {
+            .sheet(item: $selectedProfile, onDismiss: {
+                        // Handle dismissal
+                    print("IndividualProfileView dismissed") //prints in terminal
+                    }, content: { profile in
+                        IndividualProfileView(node: profile)
+                    })
+        }else {
             Button{
                 viewModel.observeListObject()
             } label: {
@@ -207,6 +222,7 @@ struct FaceDatabaseView2: View{
             }.buttonStyle(FaceDatabaseIcon())
         }
     }//body View
+        
     
     // Function to update the Firebase Database with the new toggle value for interaction tracking
     func updateTrackingValue(for node: ProfileClass, value: Bool) {

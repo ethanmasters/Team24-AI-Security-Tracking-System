@@ -28,6 +28,7 @@ struct Profile: IdentifiableHashable {
 
 }
 
+/*
 struct ListRow: View {
     @State var isProfileShowing = false
     //var profile: Profile
@@ -38,8 +39,8 @@ struct ListRow: View {
     var body: some View {
         HStack {
             ForEach(viewModel.listProfiles){ object in
-            Image(systemName: "person.circle")
-                .font(.system(size: 50))
+                Image(systemName: "person.circle")
+                    .font(.system(size: 50))
                 VStack(alignment: .leading) {
                     Text(object.name)
                         .bold()
@@ -78,6 +79,7 @@ struct ListRow: View {
         }
     }
 }
+ 
 struct CustomListView: View {
     let DummyProfiles = [
         Profile(name: "Andy Anderson", POI: false, first_seen: "08:08 AM", last_seen: "08:30 AM", interactiontrack: false),
@@ -96,7 +98,7 @@ struct CustomListView: View {
     }
     
 }
-
+*/
     
 //Collapse Button
 struct CollapseIcon: ButtonStyle {
@@ -143,6 +145,7 @@ struct ListRow2: View {
     @State var isProfileShowing = false
     @StateObject
     var viewModel = ReadViewModel()
+    @State var selectedProfile: ProfileClass? = nil
     
     var body: some View {
        
@@ -177,15 +180,19 @@ struct ListRow2: View {
                                         }.buttonStyle(CloseProfileIcon())
                                             .padding(.leading,200)
                                     }
-                                    IndividualProfileView()
-                                        .scaledToFit()
-                                        .frame(width:50)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+                                    IndividualProfileView(node: object)
+                                } //End VStack
+                            }//End if Statement
+                        } //End VStack
+                    }//End HStack
+                }//End ForEach
+            } //End List
+            .sheet(item: $selectedProfile, onDismiss: {
+                        // Handle dismissal
+                    print("IndividualProfileView dismissed") //prints in terminal
+                    }, content: { profile in
+                        IndividualProfileView(node: profile)
+                    })
         } else {
             Button{
                 viewModel.observeListObject()

@@ -9,26 +9,36 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
+struct ParentView: View {
+    @StateObject var viewModel = ReadViewModel() //Create instance of ReadViewModel
+    var body: some View {
+        IndividualProfileView(node: ProfileClass())
+            .environmentObject(viewModel) //pass viewModel as enviornment object
+    }
+}
 struct IndividualProfileView: View {
+    @EnvironmentObject var viewModel: ReadViewModel
+    @StateObject private var readViewModel = ReadViewModel()
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     private let ref = Database.database().reference()
-    //var profile: Profile
+    var node: ProfileClass
+    
+    //State properties that track Profile editing mode
+    @State private var isEditingName = false
+    @State private var editedName = ""
+    
     @State private var editNameTapped = false
     @State private var enterName = false
     @State private var istracked = true
     @State private var POI = true
     @State private var name: String = "Tag A"
     
-    @State private var isProfileShowing: Bool
-    @StateObject var viewModel = ReadViewModel()
     
-    // Initialize the view with the data for the individual node
-    init(node: ProfileClass) {
-        _isProfileShowing = State(initialValue: node.isProfileShowing)
-    }
     
     
     var body: some View {
-        let _: () = viewModel.observeListObject()
         VStack(alignment: .center){
                 HStack(alignment: .center){
                     VStack(alignment: .center){
@@ -40,31 +50,38 @@ struct IndividualProfileView: View {
                     }.padding()
                     
                     VStack(alignment: .leading){
-                        if editNameTapped {
-                            TextField("Enter Name", text: $name)
-                                .background(Color.black)
-                                .foregroundColor(.white)
-                                .padding()
-                        }
-                        Text("\(name)")
+                        Text("\(node.name)")
                             .font(.title)
                             .bold()
                             .padding(.vertical,5)
-                        Button(action: {
-                            self.editNameTapped.toggle()
-                            self.enterName.toggle()
-                        }) {
-                            if enterName {
-                                Text("Click to Enter")
-                                    .foregroundColor(.black)
-                            }else{
-                                Text("Edit Name")
-                                
+                        //Edit Name Button
+                        Button(isEditingName ? "Cancel" : "Edit Name"){
+                            //if the Edit Name button is pressed you will reassign the name of the node
+                            if isEditingName {
+                                editedName = node.name
                             }
-                            
+                            isEditingName.toggle() //Stop edit mode when done
                         }
                         .padding(.horizontal)
                         .background(.white)
+                        
+                        //Show TextField only when editing mode is active
+                        if isEditingName {
+                            VStack{
+                                TextField("Enter New Name", text: $editedName)
+                                    .padding()
+                                
+                                Button("Save"){
+                                    //Update everying edited
+                                    node.name = editedName
+                                    ref.child(String(node.id)).child("name").setValue(node.name)
+                                    
+                                    //Exit editing mode and dismiss view
+                                    isEditingName = false
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                        }
                         
                         Toggle(isOn: $POI) {
                             if(POI == true){
@@ -94,7 +111,7 @@ struct IndividualProfileView: View {
             } //HStack
             .frame(width: 400, height: 270)
             .background(Color.cyan)
-            
+        
         
     }//VStack
             
@@ -106,8 +123,12 @@ struct IndividualProfileView: View {
     
     struct IndividualProfileView_Previews: PreviewProvider {
         static var previews: some View {
+            let viewModel = ReadViewModel()
+            let profileNode = ProfileClass()
             
-            IndividualProfileView(node: node)
+            return IndividualProfileView(node: profileNode)
+                .environmentObject(viewModel)
+            
         }
     }
 
