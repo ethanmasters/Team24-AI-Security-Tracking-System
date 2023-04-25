@@ -12,7 +12,6 @@ import pickle
 import time
 import numpy as np
 
-
 # machine learning imports
 from facenet_pytorch import MTCNN
 
