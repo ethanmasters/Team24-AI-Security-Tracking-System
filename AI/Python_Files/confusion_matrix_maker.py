@@ -23,7 +23,7 @@ from tensorflow.keras.models import load_model
 
 
 # load the pre-trained model
-model = load_model('Models_and_Labels/version1_train3_face_cnn_model.h5')
+model = load_model('Models_and_Labels/20_classes_face_cnn_model.h5')
 
 # define the path to the testing data
 testing_dir = "C:/Users/ethan/Desktop/Capstone/Team24-AI-Security-Tracking-System/AI/face_datasets/test"
@@ -32,7 +32,7 @@ testing_dir = "C:/Users/ethan/Desktop/Capstone/Team24-AI-Security-Tracking-Syste
 subdirs = os.listdir(testing_dir)
 
 # load the existing class dictionary
-with open('Models_and_Labels/version1_train3-face-labels.pickle', 'rb') as f:
+with open('Models_and_Labels/20_classes-face-labels.pickle', 'rb') as f:
     class_dict = pickle.load(f)
     
 # swap keys and values in class_dict

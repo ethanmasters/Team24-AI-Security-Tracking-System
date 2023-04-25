@@ -43,14 +43,14 @@ image_width = 224
 image_height = 224
 
 # load the pre-trained model
-previous_model = 'Models_and_Labels/base_face_cnn_model.h5'
+previous_model = 'Models_and_Labels/20_classes_face_cnn_model.h5'
 model = load_model(previous_model)
 
 # directory for saving new faces
 directory = "C:/Users/ethan/Desktop/Capstone/Team24-AI-Security-Tracking-System/AI/new_people_unsorted"
 
 # open the labels for the trained model and save to a dictionary
-previous_labels = 'Models_and_Labels/base-face-labels.pickle'
+previous_labels = 'Models_and_Labels/20_classes-face-labels.pickle'
 with open(previous_labels, 'rb') as f:
     og_labels = pickle.load(f)
     labels = {key:value for key,value in og_labels.items()}

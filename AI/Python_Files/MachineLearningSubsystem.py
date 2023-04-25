@@ -400,7 +400,7 @@ THIS PROCESS IS UNOPTIMIZED FOR RUNTIME AND WILL BE OMPTIMIZED TO RUN MUCH FASTE
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 # the distance value used to determine if faces are the same person or not
-threshold = 0.25
+threshold = 0.20
 
 # a list to keep all embeddings
 embeddings = []
