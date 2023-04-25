@@ -88,12 +88,7 @@ struct ContentView: View {
                         }.navigationDestination(for: String.self){ string in
                             VStack{
                                 //FaceDatabase View
-                                Text("Face DataBase")
-                                    .font(.largeTitle)
-                                    .bold()
-                                List(DummyProfiles) { profile in
-                                    FaceDatabaseRow(profile: profile)
-                                }
+                                FaceDatabaseView2()
                             }
                         }
                     }

@@ -3,7 +3,7 @@
 //  prototype
 //
 //  Created by Sarah Beltran on 3/22/23.
-// TEST 3
+//
 
 import SwiftUI
 import FirebaseDatabase
@@ -103,15 +103,11 @@ struct FaceDatabaseView_Previews: PreviewProvider {
     }
 }
 
-func pushTracked(value: Int, content: Bool){
-    let ref = Database.database().reference()
-    ref.child(String(value)).child("interactiontrack").setValue(content)
-}
+
 
 struct FaceDatabaseView2: View{
     private let ref = Database.database().reference()
     
-    @State private var istracked = true
     @State var isProfileShowing = false
     
     @StateObject
@@ -188,13 +184,14 @@ struct FaceDatabaseView2: View{
                                         .padding(.leading,80)
                                         .font(.title2)
                                 }
-                                Toggle(isOn: $istracked){
-                                    Toggle("Interaction Track")
-                                }.onChange(of: istracked) { value in
-                                   // pushTracked(value: object.id, content: value)
-                                }
-                                .padding(.trailing,90)
-                                .padding(.top,-50)
+                                Toggle("", isOn: $viewModel.listProfiles[getIndex(for: object)].interactiontrack)
+                                    .padding(.trailing,90)
+                                    .padding(.top,-50)
+                                    .onChange(of: viewModel.listProfiles[getIndex(for: object)].interactiontrack, perform: { value in
+                                        //Update Firebase when toggle changes
+                                     updateTrackingValue(for: object, value: value)
+                                })
+                                
                                     
                             }
                         }//HStack
@@ -210,5 +207,17 @@ struct FaceDatabaseView2: View{
             }.buttonStyle(FaceDatabaseIcon())
         }
     }//body View
+    
+    // Function to update the Firebase Database with the new toggle value for interaction tracking
+    func updateTrackingValue(for node: ProfileClass, value: Bool) {
+        let firebaseRef = Database.database().reference()
+        let childPath = "\(getIndex(for: node))/interactiontrack"
+        firebaseRef.child(childPath).setValue(value)
+    }
+    
+    // Function to get the index of the node in the local array
+    func getIndex(for node: ProfileClass) -> Int {
+        return viewModel.listProfiles.firstIndex(where: { $0.id == node.id }) ?? 0
+    }
 }
 
