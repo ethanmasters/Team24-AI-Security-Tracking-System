@@ -19,6 +19,8 @@ class ProfileClass: Encodable, Decodable, Identifiable{
 }
 
 
+
+
 extension Encodable{
     var toDictionary: [String: Any]?{
         guard let data = try? JSONEncoder().encode(self) else {

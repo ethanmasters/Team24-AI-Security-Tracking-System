@@ -167,7 +167,7 @@ struct ListRow2: View {
                             }
                             
                             Button("PROFILE"){
-                                ref.child(String(object.id)).child("isProfileShowing").setValue(true)
+                                selectedProfile = object
                             }.buttonStyle(PROFILEButton())
                             
                             //Profile popup
